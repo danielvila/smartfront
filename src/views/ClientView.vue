@@ -1,16 +1,18 @@
 <script setup>
 
-  import {provide, ref, watchEffect} from 'vue';
+  import {provide, ref, watchEffect} from 'vue';  
+  import FinancialData from "@/components/clients/FinancialData.vue";
   import ClientForm from "@/components/clients/Form.vue";
   import OtrosDatos from "@/components/clients/OtrosDatos.vue";
-  import TheWelcome from "@/components/TheWelcome.vue";
+  import Record from "@/components/clients/Record.vue";
 
   const clients = ref([])
   const currentTab = ref('ClientForm')
   const tabs = {
     ClientForm,
     OtrosDatos,
-    TheWelcome
+    FinancialData,
+    Record
   }
 
   provide('clients', clients)
