@@ -1,5 +1,4 @@
 <script setup>
-
   import {provide, ref, watchEffect} from 'vue';  
   import FinancialData from "@/components/clients/FinancialData.vue";
   import ClientForm from "@/components/clients/Form.vue";

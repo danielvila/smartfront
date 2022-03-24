@@ -1,36 +1,42 @@
 <template>
   <div v-if="loading">Cargando...</div>
-  <div v-else class="mt-5 md:mt-0 md:col-span-2 scroll-smooth">
-    <table class="table-auto border-collapse border border-slate-500 w-full">
-    <thead>
-      <tr>
-        <th class="border border-slate-500 p-4">Periodo</th>
-        <th class="border border-slate-500 p-4">Nro. factura</th>
-        <th class="border border-slate-500 p-4">Contado</th>
-        <th class="border border-slate-500 p-4">Cr&eacute;dito</th>
-        <th class="border border-slate-500 p-4">Descuentos</th>
-        <th class="border border-slate-500 p-4">Total venta</th>
-        <th class="border border-slate-500 p-4">Costo de venta</th>
-        <th class="border border-slate-500 p-4">Utilidad</th>
-        <th class="border border-slate-500 p-4">Nro. de devoluci&oacute;n</th>
-        <th class="border border-slate-500 p-4">Monto de devoluci&oacute;n</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>     
-    </tbody>
-  </table>
+  <div v-else class="flex flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="overflow-x-auto pb-3">
+          <table class="min-w-full">
+            <thead class="border-b text-white">
+              <tr class="bg-teal-400">
+                <th scope="col" class="text-sm font-medium p-3 text-left">Periodo</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Nro. factura</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Contado</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Cr&eacute;dito</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Descuentos</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Total venta</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Costo de venta</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Utilidad</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Nro. de devoluci&oacute;n</th>
+                <th scope="col" class="text-sm font-medium p-3 text-left">Monto de devoluci&oacute;n</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              </tr>     
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -150,3 +156,27 @@
     });
   
 </script>
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }
+</style>

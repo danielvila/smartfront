@@ -5,60 +5,138 @@
       <div class="shadow overflow-hidden sm:rounded-md border border-gray-300">
         <div class="flex flex-col md:flex-row flex-wrap">
           <div class="flex w-full">
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3">
               <label class="text-sm font-medium text-gray-700">
                 Tiene cr&eacute;dito
               </label>
-              <input type="checkbox" class="rounded text-pink-500" />
+              <input type="checkbox" v-model="financialdatos.credito" class="rounded text-pink-500" />
             </div>
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3" v-if="financialdatos.credito">
               <label class="block text-sm font-medium text-gray-700">
                 Limite cr&eacute;dito
               </label>
-              <input type="text" v-model.number="otrosdatos.zone" required 
+              <input type="text" v-model.number="financialdatos.credito_limite" required 
                 class="form-input border-gray-300 mt-1 block rounded w-full"
               />
             </div>
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3" v-if="financialdatos.credito">
               <label class="block text-sm font-medium text-gray-700">
                 D&iacute;as de cr&eacute;dito
               </label>
-              <input type="text" v-model.number="otrosdatos.zone" required 
+              <input type="text" v-model.number="financialdatos.credito_dias" required 
                 class="form-input border-gray-300 mt-1 block rounded w-full"
               />
             </div>
           </div>
           <div class="flex w-full">
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3">
               <label class="text-sm font-medium text-gray-700">
                 Tiene tolerancia
               </label>
-              <input type="checkbox" class="rounded text-pink-500" />
+              <input type="checkbox" v-model="financialdatos.tolerancia" class="rounded text-pink-500" />
             </div>
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3" v-if="financialdatos.tolerancia">
               <label class="block text-sm font-medium text-gray-700">
                 D&iacute;as de tolerancia
               </label>
-              <input type="text" v-model.number="otrosdatos.zone" required 
+              <input type="text" v-model.number="financialdatos.tolerancia_dias" required 
                 class="form-input border-gray-300 mt-1 block rounded w-full"
               />
             </div>
           </div>
           <div class="flex w-full">
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3">
               <label class="text-sm font-medium text-gray-700">
                 Inter&eacute;s de mora
               </label>
-              <input type="checkbox" class="rounded text-pink-500" />
+              <input type="checkbox" v-model="financialdatos.interes_mora" class="rounded text-pink-500" />
             </div>
           </div> 
           <div class="flex w-full">
-            <div class="basis-1/3 p-3">
+            <div class="basis-1/4 p-3">
               <label class="text-sm font-medium text-gray-700">
                 % Descuento
               </label>
-              <input type="text" v-model.number="otrosdatos.zone" required 
+              <input type="text" v-model.number="financialdatos.descuento" required 
                 class="form-input border-gray-300 mt-1 rounded"
+              />
+            </div>
+          </div>
+        
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">Saldo pendiente</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+            <div class="basis-1/4 p-3">Adelantos</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">Ultima venta</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">Ultimo pago</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">M&aacute;ximo factura</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">M&aacute;ximo cr&eacute;dito</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">D&iacute;as prom. pago</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">Retenciones</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
+              />
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="basis-1/4 p-3">Puntos acumulados</div>
+            <div class="basis-1/4 p-3">
+              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" readonly="readonly" 
               />
             </div>
           </div>
@@ -99,16 +177,16 @@
   const id_client = ref(route.params.id);
   const textinsertupdate = ref("Guardar");
 
-  const otrosdatos = ref({id: 0, client_id: id_client, zone: 0, user_id: 0, client_cxc: 0, type_client: 0, type_price: 0});
+  const financialdatos = ref({id: 0, client_id: id_client, credito: 0, credito_limite: 0, credito_dias: 0, tolerancia: 0, tolerancia_dias: 0, interes_mora: 0, descuento: 0});
 
   const formulario = async () => {
       if (nuevo.value) {
-        console.log('guardamos si existe el cliente' + otrosdatos.value.client_id);
+        console.log('guardamos si existe el cliente' + financialdatos.value.client_id);
         await axios
-          .post("other_data", send_data())
+          .post("financial_data", send_data())
           .then((response) => {            
             console.log(response.data);
-            console.log('se agrego otrosdatos');
+            console.log('se agrego financialdatos');
           })
           .catch(function (error) {
             if (error.response) {
@@ -124,10 +202,10 @@
             console.log(error.toJSON());
           })
           .finally(() => (console.log('tarea finalizada')));
-      } else if ( otrosdatos.value.id > 0) {
-        console.log('guardamos si existe otros datos en la db');
+      } else if ( financialdatos.value.id > 0) {
+        console.log('guardamos si existe financial datos en la db');
         await axios
-          .patch("other_data/" + otrosdatos.value.id, send_data())
+          .patch("financial_data/" + financialdatos.value.id, send_data())
           .then((response) => {
             zones.value = zones.value.map((item) => {
               if (item.id === response.data.data.id) {
@@ -140,7 +218,7 @@
           .catch(function (error) {
             console.log(error);
           })
-          .finally(() => (console.log('otros datos actualizados')));
+          .finally(() => (console.log('financial datos actualizados')));
       }else{
         console.log('primero debe guardar los datos del cliente')
       }
@@ -148,49 +226,52 @@
  
     const send_data = () => {
       return {
-            client_id: otrosdatos.value.client_id,
-            zone: otrosdatos.value.zone,
-            user_id: otrosdatos.value.user_id,
-            client_cxc: otrosdatos.value.client_cxc,
-            type_client: otrosdatos.value.type_client,
-            type_price: otrosdatos.value.type_price,
+            client_id: financialdatos.value.client_id,
+            credito: financialdatos.value.credito,
+            credito_limite: financialdatos.value.credito_limite,
+            credito_dias: financialdatos.value.credito_dias,
+            tolerancia: financialdatos.value.tolerancia,
+            tolerancia_dias: financialdatos.value.tolerancia_dias,
+            interes_mora: financialdatos.value.interes_mora,
+            descuento: financialdatos.value.descuento,
           };
     };
 
-    onMounted(async () => {
-        
+    onMounted(async () => {        
       if (
         typeof route.params.id === "undefined" ||
           route.params.id === null ||
           route.params.id === ""
         ) {
-          console.log("cargamos otrosdatos con valores vacios");
+          console.log("cargamos financialdatos con valores vacios");
           id_client.value = 0;
           loading.value = false;
         }else{
           await axios
-              .get(`show_client/${route.params.id}`)
+              .get(`show_financial_client/${route.params.id}`)
               .then(response => {          
-                otrosdatos.value = response.data
-                console.log('cargando otrosdatos desde web');          
+                financialdatos.value = response.data
+                console.log('cargando financialdatos desde web');          
               })
               .catch((error) => console.log(error))
               .finally(() => (loading.value = false));
       }
 
       if (id_client.value > 0) {
-        if(otrosdatos.value.id > 0){
+        if(financialdatos.value.id > 0){
           textinsertupdate.value = "Actualizar";
         }else{
           nuevo.value = true;
-          otrosdatos.value = {
-                    "id": 0,
-                    "client_id": id_client.value,
-                    "zone": 0,
-                    "user_id": 0,
-                    "client_cxc": 0,
-                    "type_client": 0,
-                    "type_price": 0,
+          financialdatos.value = {
+                    id: 0,
+                    client_id: id_client.value,
+                    credito: 0,
+                    credito_limite: 0,
+                    credito_dias: 0,
+                    tolerancia: 0,
+                    tolerancia_dias: 0,
+                    interes_mora: 0,
+                    descuento: 0,
                 }        
         }            
       }
