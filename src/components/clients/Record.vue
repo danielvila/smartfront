@@ -1,40 +1,38 @@
 <template>
   <div v-if="loading">Cargando...</div>
   <div v-else class="flex flex-col">
-    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="overflow-x-auto pb-3">
-          <table class="min-w-full">
-            <thead class="border-b text-white">
-              <tr class="bg-teal-400">
-                <th scope="col" class="text-sm font-medium p-3 text-left">Periodo</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Nro. factura</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Contado</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Cr&eacute;dito</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Descuentos</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Total venta</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Costo de venta</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Utilidad</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Nro. de devoluci&oacute;n</th>
-                <th scope="col" class="text-sm font-medium p-3 text-left">Monto de devoluci&oacute;n</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b">
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-                <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
-              </tr>     
-            </tbody>
-          </table>
-        </div>
+    <div class="overflow-x-auto pb-3">
+      <div class="inline-block min-w-full sm:rounded-md border border-gray-300">
+        <table class="min-w-full">
+          <thead class="border-b text-white">
+            <tr class="bg-teal-400">
+              <th scope="col" class="text-sm font-medium p-3 text-left">Periodo</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Nro. factura</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Contado</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Cr&eacute;dito</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Descuentos</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Total venta</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Costo de venta</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Utilidad</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Nro. de devoluci&oacute;n</th>
+              <th scope="col" class="text-sm font-medium p-3 text-left">Monto de devoluci&oacute;n</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+              <td class="border-grey-light border text-sm text-gray-900 font-light whitespace-nowrap hover:bg-gray-100 p-3"></td>
+            </tr>     
+          </tbody>
+        </table>        
       </div>
     </div>
   </div>

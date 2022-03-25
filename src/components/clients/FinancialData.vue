@@ -9,7 +9,7 @@
               <label class="text-sm font-medium text-gray-700">
                 Tiene cr&eacute;dito
               </label>
-              <input type="checkbox" v-model="financialdatos.credito" class="rounded text-pink-500" />
+              <input type="checkbox" v-model="financialdatos.credito" value="1" class="rounded text-pink-500" />
             </div>
             <div class="basis-1/4 p-3" v-if="financialdatos.credito">
               <label class="block text-sm font-medium text-gray-700">
@@ -33,7 +33,7 @@
               <label class="text-sm font-medium text-gray-700">
                 Tiene tolerancia
               </label>
-              <input type="checkbox" v-model="financialdatos.tolerancia" class="rounded text-pink-500" />
+              <input type="checkbox" v-model="financialdatos.tolerancia" value="1" class="rounded text-pink-500" />
             </div>
             <div class="basis-1/4 p-3" v-if="financialdatos.tolerancia">
               <label class="block text-sm font-medium text-gray-700">
@@ -49,7 +49,7 @@
               <label class="text-sm font-medium text-gray-700">
                 Inter&eacute;s de mora
               </label>
-              <input type="checkbox" v-model="financialdatos.interes_mora" class="rounded text-pink-500" />
+              <input type="checkbox" v-model="financialdatos.interes_mora" value="1" class="rounded text-pink-500" />
             </div>
           </div> 
           <div class="flex w-full">
@@ -184,7 +184,8 @@
         console.log('guardamos si existe el cliente' + financialdatos.value.client_id);
         await axios
           .post("financial_data", send_data())
-          .then((response) => {            
+          .then((response) => {
+            textinsertupdate.value = "Actualizar";          
             console.log(response.data);
             console.log('se agrego financialdatos');
           })
@@ -206,13 +207,7 @@
         console.log('guardamos si existe financial datos en la db');
         await axios
           .patch("financial_data/" + financialdatos.value.id, send_data())
-          .then((response) => {
-            zones.value = zones.value.map((item) => {
-              if (item.id === response.data.data.id) {
-                item = response.data.data;
-              }
-              return item;
-            });
+          .then((response) => {            
             console.log(response.data.data);
           })
           .catch(function (error) {
@@ -227,12 +222,12 @@
     const send_data = () => {
       return {
             client_id: financialdatos.value.client_id,
-            credito: financialdatos.value.credito,
+            credito: financialdatos.value.credito? 1 : 0,
             credito_limite: financialdatos.value.credito_limite,
             credito_dias: financialdatos.value.credito_dias,
-            tolerancia: financialdatos.value.tolerancia,
+            tolerancia: financialdatos.value.tolerancia? 1 : 0,
             tolerancia_dias: financialdatos.value.tolerancia_dias,
-            interes_mora: financialdatos.value.interes_mora,
+            interes_mora: financialdatos.value.interes_mora? 1 : 0,
             descuento: financialdatos.value.descuento,
           };
     };
@@ -250,7 +245,10 @@
           await axios
               .get(`show_financial_client/${route.params.id}`)
               .then(response => {          
-                financialdatos.value = response.data
+                financialdatos.value = response.data;
+                financialdatos.value.credito = response.data.credito? true : false;
+                financialdatos.value.tolerancia = response.data.tolerancia? true : false;
+                financialdatos.value.interes_mora = response.data.interes_mora? true : false;
                 console.log('cargando financialdatos desde web');          
               })
               .catch((error) => console.log(error))
@@ -265,12 +263,12 @@
           financialdatos.value = {
                     id: 0,
                     client_id: id_client.value,
-                    credito: 0,
+                    credito: false,
                     credito_limite: 0,
                     credito_dias: 0,
-                    tolerancia: 0,
+                    tolerancia: false,
                     tolerancia_dias: 0,
-                    interes_mora: 0,
+                    interes_mora: false,
                     descuento: 0,
                 }        
         }            
