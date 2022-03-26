@@ -8,7 +8,7 @@
             <label class="block text-sm font-medium text-gray-700">
               Zona
             </label>
-            <select v-model="otrosdatos.zone" required
+            <select v-model="otrosdatos.zone_id" required
               class="form-input border-gray-300 mt-1 block rounded w-full">
               <option value="0" selected>Seleccionar zona</option>
               <option v-for="zone in zones" :value="zone.id" >{{zone.name}}</option>
@@ -109,7 +109,7 @@ export default {
     const zones = ref([]);
     const id_client = ref(route.params.id);
 
-    const otrosdatos = ref({id: 0, client_id: id_client, zone: 0, user_id: 0, client_cxc: 0, type_client: 0, type_price: 0});
+    const otrosdatos = ref({id: 0, client_id: id_client, zone_id: 0, user_id: 0, client_cxc: 0, type_client: 0, type_price: 0});
     
     const formulario = async () => {
       if (nuevo.value) {
@@ -144,13 +144,7 @@ export default {
         console.log('guardamos si existe otros datos en la db');
         await axios
           .patch("other_data/" + otrosdatos.value.id, send_data())
-          .then((response) => {
-            zones.value = zones.value.map((item) => {
-              if (item.id === response.data.data.id) {
-                item = response.data.data;
-              }
-              return item;
-            });
+          .then((response) => {            
             console.log(response.data.data);
           })
           .catch(function (error) {
@@ -165,7 +159,7 @@ export default {
     const send_data = () => {
       return {
             client_id: otrosdatos.value.client_id,
-            zone: otrosdatos.value.zone,
+            zone_id: otrosdatos.value.zone_id,
             user_id: otrosdatos.value.user_id,
             client_cxc: otrosdatos.value.client_cxc,
             type_client: otrosdatos.value.type_client,
@@ -233,7 +227,7 @@ export default {
           otrosdatos.value = {
                     "id": 0,
                     "client_id": id_client.value,
-                    "zone": 0,
+                    "zone_id": 0,
                     "user_id": 0,
                     "client_cxc": 0,
                     "type_client": 0,
