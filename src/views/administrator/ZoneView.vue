@@ -1,7 +1,7 @@
 <script setup>
 
   import {provide, ref, watchEffect} from 'vue';
-  import ZoneForm from "@/components/zones/Form.vue";
+  import ZoneForm from "@/components/administrator/zones/Form.vue";
 
   const zones = ref([])
   

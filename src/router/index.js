@@ -24,17 +24,45 @@ const router = createRouter({
         props: true
     },
     {
-      path: "/zonas",
+      path: "/administrator/proveedores",
+      name: "proveedores",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/administrator/SuppliersView.vue"),
+    },
+    {
+        path: '/administrator/proveedor/:id?',
+        name: 'proveedor',
+        component: () => import("../views/administrator/SupplierView.vue"),
+        props: true
+    },
+    {
+      path: "/administrator/zonas",
       name: "zonas",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/ZonesView.vue"),
+      component: () => import("../views/administrator/ZonesView.vue"),
     },
     {
-        path: '/zona/:id?',
+        path: '/administrator/zona/:id?',
         name: 'zona',
-        component: () => import("../views/ZoneView.vue"),
+        component: () => import("../views/administrator/ZoneView.vue"),
+        props: true
+    },
+    {
+      path: "/administrator/vendedores",
+      name: "vendedores",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/administrator/SellersView.vue"),
+    },
+    {
+        path: '/administrator/vendedor/:id?',
+        name: 'vendedor',
+        component: () => import("../views/administrator/ClientView.vue"),
         props: true
     },
   ],

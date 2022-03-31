@@ -11,7 +11,9 @@
       <nav class="flex justify-center space-x-4">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/clientes">Clientes</RouterLink>
-        <RouterLink to="/zonas">Zonas</RouterLink>
+        <RouterLink to="/administrator/vendedores">Vendedores</RouterLink>
+        <RouterLink to="/administrator/proveedores">Proveedores</RouterLink>
+        <RouterLink to="/administrator/zonas">Zonas</RouterLink>
       </nav>
     </div>
   </header>

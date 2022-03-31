@@ -1,6 +1,6 @@
 <script setup>
   import {inject} from 'vue';
-  import ZoneItem from "@/components/zones/Item.vue";
+  import ZoneItem from "@/components/administrator/zones/Item.vue";
   import { library } from '@fortawesome/fontawesome-svg-core';
   import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

@@ -1,7 +1,7 @@
 <script setup>
   import axios from 'axios';
   import {onMounted, provide, ref, watchEffect} from 'vue';
-  import ZoneList from "@/components/zones/List.vue";
+  import ZoneList from "@/components/administrator/zones/List.vue";
 
   const zones = ref([])
   provide('zones', zones)
