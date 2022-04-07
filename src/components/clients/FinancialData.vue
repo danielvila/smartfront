@@ -176,8 +176,9 @@
   const route = useRoute();
   const id_client = ref(route.params.id);
   const textinsertupdate = ref("Guardar");
+  const financialdatos = inject("financialdatos");
 
-  const financialdatos = ref({id: 0, client_id: id_client, credito: 0, credito_limite: 0, credito_dias: 0, tolerancia: 0, tolerancia_dias: 0, interes_mora: 0, descuento: 0});
+  /*const financialdatos = ref({id: 0, client_id: id_client, credito: 0, credito_limite: 0, credito_dias: 0, tolerancia: 0, tolerancia_dias: 0, interes_mora: 0, descuento: 0});*/
 
   const formulario = async () => {
       if (nuevo.value) {
@@ -217,20 +218,20 @@
       }else{
         console.log('primero debe guardar los datos del cliente')
       }
-    };
+  };
  
-    const send_data = () => {
-      return {
-            client_id: financialdatos.value.client_id,
-            credito: financialdatos.value.credito? 1 : 0,
-            credito_limite: financialdatos.value.credito_limite,
-            credito_dias: financialdatos.value.credito_dias,
-            tolerancia: financialdatos.value.tolerancia? 1 : 0,
-            tolerancia_dias: financialdatos.value.tolerancia_dias,
-            interes_mora: financialdatos.value.interes_mora? 1 : 0,
-            descuento: financialdatos.value.descuento,
-          };
-    };
+  const send_data = () => {
+    return {
+          client_id: financialdatos.value.client_id,
+          credito: financialdatos.value.credito? 1 : 0,
+          credito_limite: financialdatos.value.credito_limite,
+          credito_dias: financialdatos.value.credito_dias,
+          tolerancia: financialdatos.value.tolerancia? 1 : 0,
+          tolerancia_dias: financialdatos.value.tolerancia_dias,
+          interes_mora: financialdatos.value.interes_mora? 1 : 0,
+          descuento: financialdatos.value.descuento,
+        };
+  };
 
     onMounted(async () => {        
       if (
@@ -242,7 +243,8 @@
           id_client.value = 0;
           loading.value = false;
         }else{
-          await axios
+          loading.value = false
+          /*await axios
               .get(`show_financial_client/${route.params.id}`)
               .then(response => {          
                 financialdatos.value = response.data;
@@ -252,7 +254,7 @@
                 console.log('cargando financialdatos desde web');          
               })
               .catch((error) => console.log(error))
-              .finally(() => (loading.value = false));
+              .finally(() => (loading.value = false));*/
       }
 
       if (id_client.value > 0) {

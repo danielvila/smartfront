@@ -239,19 +239,22 @@ export default {
   name: "Form",
   components: { FontAwesomeIcon },
   setup() {
-    const clients = inject("clients");
-    const client = ref({ id: 0, activo: '1', tipo: '1'});
+    const client = inject("client");
+    //const client = ref({ id: 0, activo: '1', tipo: '1'});
     const textinsertupdate = ref("Actualizar");
     const textdescripcion = ref("Nombre de la empresa")
     const route = useRoute();
     let nuevo = false;
     const loading = ref(true);
+    console.log('comienza');
+    console.log(client.value.id);
+    console.log('termina');
     const formulario = async () => {
       if (nuevo) {
         await axios
           .post("clients", send_data())
           .then((response) => {
-            clients.value.push(response.data.data);
+            //clients.value.push(response.data.data);
             //route.push("cliente/" + response.data.data.id);
             console.log(response.data);
           })
@@ -279,12 +282,12 @@ export default {
         await axios
           .patch("clients/" + route.params.id, send_data())
           .then((response) => {
-            clients.value = clients.value.map((item) => {
+            /*clients.value = clients.value.map((item) => {
               if (item.id === response.data.data.id) {
                 item = response.data.data;
               }
               return item;
-            });
+            });*/
             console.log(response.data.data);
           })
           .catch(function (error) {
@@ -356,13 +359,14 @@ export default {
         textinsertupdate.value = "Guardar";
       });
     } else {
-      onMounted(async () => {
-        await axios
+      onMounted(() => {
+        loading.value = false
+        /*await axios
           .get(`clients/${route.params.id}`)
           .then((response) => {
             console.log(response.data);
             if (response.data != "") {
-              client.value = response.data;
+              client.value = response.data.client;
             } else {
               if (clients.value.length > 0) {
                 client.value = clients.value.filter(
@@ -372,10 +376,10 @@ export default {
             }
           })
           .catch((error) => console.log(error))
-          .finally(() => (loading.value = false));
+          .finally(() => (loading.value = false));*/
       });
     }
-    return { changetipo, client, clients, formulario, loading, textdescripcion, textinsertupdate };
+    return { changetipo, client, formulario, loading, textdescripcion, textinsertupdate };
   },
 };
 </script>

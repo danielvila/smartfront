@@ -108,8 +108,8 @@ export default {
     const textinsertupdate = ref("Guardar");
     const zones = ref([]);
     const id_client = ref(route.params.id);
-
-    const otrosdatos = ref({id: 0, client_id: id_client, zone_id: 0, user_id: 0, client_cxc: 0, type_client: 0, type_price: 0});
+    const otrosdatos = inject("otrosdatos");
+    /*const otrosdatos = ref({id: 0, client_id: id_client, zone_id: 0, user_id: 0, client_cxc: 0, type_client: 0, type_price: 0});*/
     
     const formulario = async () => {
       if (nuevo.value) {
@@ -209,14 +209,15 @@ export default {
           console.log("cargamos otrosdatos con valores vacios");
           id_client.value = 0;
         }else{
-          await axios
+          loading.value = false
+          /*await axios
               .get(`show_client/${route.params.id}`)
               .then(response => {          
                 otrosdatos.value = response.data
                 console.log('cargando otrosdatos desde web');          
               })
               .catch((error) => console.log(error))
-              .finally(() => (loading.value = false));
+              .finally(() => (loading.value = false));*/
       }
 
       if (id_client.value > 0) {
@@ -234,9 +235,9 @@ export default {
                     "type_price": 0,
                 }        
         }            
-      }
+      }      
     });
-
+    
     return { clients, zones, formulario, id_client, loading, nuevo, otrosdatos, sellers, textinsertupdate };
   },
 };
