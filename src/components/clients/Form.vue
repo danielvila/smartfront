@@ -191,7 +191,6 @@
                   v-model="client.activo"
                   style="display: none"
                   id="activo-0"
-                  class="bg-red-500"
                 />
                 <label
                   for="activo-0"

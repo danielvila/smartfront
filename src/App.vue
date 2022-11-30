@@ -10,6 +10,7 @@
 
       <nav class="flex justify-center space-x-4">
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/productos">Productos</RouterLink>
         <RouterLink to="/clientes">Clientes</RouterLink>
         <RouterLink to="/administrator/vendedores">Vendedores</RouterLink>
         <RouterLink to="/administrator/proveedores">Proveedores</RouterLink>

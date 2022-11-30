@@ -10,11 +10,22 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/clientes",
-      name: "clientes",
+      path: "/productos",
+      name: "productos",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      component: () => import("../views/ProductsView.vue"),
+    },
+    {
+        path: '/producto/:id?',
+        name: 'producto',
+        component: () => import("../views/ProductView.vue"),
+        props: true
+    },
+    {
+      path: "/clientes",
+      name: "clientes",
       component: () => import("../views/ClientsView.vue"),
     },
     {
@@ -26,9 +37,6 @@ const router = createRouter({
     {
       path: "/administrator/proveedores",
       name: "proveedores",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/administrator/SuppliersView.vue"),
     },
     {
@@ -40,9 +48,6 @@ const router = createRouter({
     {
       path: "/administrator/zonas",
       name: "zonas",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/administrator/ZonesView.vue"),
     },
     {
@@ -54,9 +59,6 @@ const router = createRouter({
     {
       path: "/administrator/vendedores",
       name: "vendedores",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/administrator/SellersView.vue"),
     },
     {
