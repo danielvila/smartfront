@@ -6,39 +6,15 @@
         <div class="flex flex-col md:flex-row flex-wrap">
           <div class="flex w-full" >
             <div class="basis-1/4 p-3">
-              <p v-for="alternate in alternatecodes" :key="alternate">
-                {{alternatecodes.value[alternate].code}}
-              </p>
+              <h2>Codigos alternos</h2>
+              <p v-for="alternate in alternatecodes" :key="alternate.id">
+                {{alternate.code}}
+              </p>              
             </div>
-          </div>
+          </div>          
           <div class="flex w-full">
             <div class="basis-1/4 p-3">
-              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" />
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="basis-1/4 p-3">
-              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" />
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="basis-1/4 p-3">
-              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" />
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="basis-1/4 p-3">
-              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" />
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="basis-1/4 p-3">
-              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" />
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="basis-1/4 p-3">
-              <input type="text" class="form-input border-gray-300 mt-1 block rounded w-full" />
+              <input type="text" v-model.trim="alternatecode.code" class="form-input border-gray-300 mt-1 block rounded w-full" />
             </div>
           </div>
         </div>
@@ -72,16 +48,17 @@
   const id_product = ref(route.params.id);
   const textinsertupdate = ref("Guardar");
   const alternatecodes = inject("alternatecodes");
-  /*const alternatecodes = ref({id: 0, product_id: id_product, credito: 0, credito_limite: 0, credito_dias: 0, tolerancia: 0, tolerancia_dias: 0, interes_mora: 0, descuento: 0});*/
+  const alternatecode = ref({id: 0, product_id: id_product, code: ""});
+
   const formulario = async () => {
       if (nuevo.value) {
-        console.log('guardamos si existe el producte' + alternatecodes.value.product_id);
+        console.log('guardamos si existe el producto' + alternatecodes.value.product_id);
         await axios
-          .post("financial_data", send_data())
+          .post("alternatecodes", send_data())
           .then((response) => {
             textinsertupdate.value = "Actualizar";          
             console.log(response.data);
-            console.log('se agrego alternatecodes');
+            console.log('se agrego codigo alterno');
           })
           .catch(function (error) {
             if (error.response) {
@@ -98,16 +75,16 @@
           })
           .finally(() => (console.log('tarea finalizada')));
       } else if ( alternatecodes.value.id > 0) {
-        console.log('guardamos si existe financial datos en la db');
+        console.log('guardamos si existe codigo alterno datos en la db');
         await axios
-          .patch("financial_data/" + alternatecodes.value.id, send_data())
+          .patch("alternatecodes/" + alternatecode.value.id, send_data())
           .then((response) => {            
             console.log(response.data.data);
           })
           .catch(function (error) {
             console.log(error);
           })
-          .finally(() => (console.log('financial datos actualizados')));
+          .finally(() => (console.log('codigo alterno actualizados')));
       }else{
         console.log('primero debe guardar los datos del producte')
       }
@@ -115,14 +92,8 @@
  
   const send_data = () => {
     return {
-          product_id: alternatecodes.value.product_id,
-          credito: alternatecodes.value.credito? 1 : 0,
-          credito_limite: alternatecodes.value.credito_limite,
-          credito_dias: alternatecodes.value.credito_dias,
-          tolerancia: alternatecodes.value.tolerancia? 1 : 0,
-          tolerancia_dias: alternatecodes.value.tolerancia_dias,
-          interes_mora: alternatecodes.value.interes_mora? 1 : 0,
-          descuento: alternatecodes.value.descuento,
+          product_id: alternatecode.value.product_id,
+          code: alternatecode.value.code,
         };
   };
 
@@ -136,24 +107,18 @@
         id_product.value = 0;
         loading.value = false;
       }else{
-        loading.value = false;
-        await axios
-            .get(`alternatecodes/${route.params.id}`)
-            .then(response => {
-              alternatecodes.value = response.data.alternatecode;
-              console.log(alternatecodes.value);
-              console.log('cargando alternatecodes desde web');
-            })
-            .catch((error) => console.log(error))
-            .finally(() => (loading.value = false));
+        alternatecodes.value.forEach((item, index) => {
+          console.log(item.code, index)
+        });
+        console.log('cargando alternatecodes desde web'); 
+        loading.value = false;        
     }
     
     if (id_product.value > 0) {
-      if(alternatecodes.value.id > 0){
+      if(alternatecode.value.id > 0){
         textinsertupdate.value = "Actualizar";
       }else{
         nuevo.value = true;
-        alternatecodes.value = {}
       }
     }
   });
